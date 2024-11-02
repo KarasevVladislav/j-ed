@@ -1,0 +1,1 @@
+export { getChunkSize } from './getChunkSize';

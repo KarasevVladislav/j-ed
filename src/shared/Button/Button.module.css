@@ -1,0 +1,11 @@
+.button {
+  display: inline-block;
+  transition: all .7s ease;
+  background: none;
+  border: none;
+  color: white;
+}
+
+.button_open {
+  transform: rotate(90deg);
+}
