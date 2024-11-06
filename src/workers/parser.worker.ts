@@ -1,6 +1,6 @@
 /// <reference lib="webworker" />
 
-import { Json, JsonEntry, JsonEntryType } from '../types/chunks';
+import { JsonType, JsonEntry, JsonEntryType } from '../types/chunks';
 import { isValid } from 'date-fns';
 
 declare let self: ServiceWorkerGlobalScope;
@@ -8,6 +8,10 @@ declare let self: ServiceWorkerGlobalScope;
 function checkIfEmail(email: string) {
 	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 	return emailRegex.test(email);
+}
+
+function checkIfDate(date: string) {
+	return isValid(new Date(date));
 }
 
 function typeChecker(value: unknown): JsonEntryType {
@@ -19,7 +23,7 @@ function typeChecker(value: unknown): JsonEntryType {
 	} else if (typeof value === 'string') {
 		if (checkIfEmail(value)) {
 			result = JsonEntryType.EMAIL;
-		} else if (isValid(new Date(value))) {
+		} else if (checkIfDate(value)) {
 			result = JsonEntryType.DATE;
 		} else if (value.length > 100) {
 			result = JsonEntryType.LONG_TEXT;
@@ -33,9 +37,9 @@ function typeChecker(value: unknown): JsonEntryType {
 	return result;
 }
 
-function parseJson(rawData: Record<string, unknown>[]): Json[] {
+function parseJson(rawData: Record<string, unknown>[]): JsonType[] {
 	return rawData.map((rawDataJson) => {
-		const copy = { ...rawDataJson } as Json;
+		const copy = { ...rawDataJson } as JsonType;
 		const keys = Object.keys(rawDataJson);
 
 		keys.forEach((key) => {

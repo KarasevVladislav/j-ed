@@ -4,8 +4,11 @@
   background: none;
   border: none;
   color: white;
+  
 }
 
 .button_open {
   transform: rotate(90deg);
+  align-self: self-start;
+  margin-top: 5px;
 }

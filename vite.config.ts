@@ -1,6 +1,6 @@
-import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import * as path from 'path';
+import { defineConfig } from 'vitest/config';
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -12,5 +12,10 @@ export default defineConfig({
 			'@modules': path.resolve(__dirname, 'src/modules'),
 			'@context': path.resolve(__dirname, 'src/App-context.tsx'),
 		},
+	},
+	test: {
+		globals: true,
+		environment: 'jsdom',
+		setupFiles: ['@vitest/web-worker'],
 	},
 });

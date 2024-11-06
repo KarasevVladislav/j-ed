@@ -1,50 +1,25 @@
-# React + TypeScript + Vite
+# J - ED
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Тестовое
 
-Currently, two official plugins are available:
+## Требования
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* node >= 18.18
+* yarn
 
-## Expanding the ESLint configuration
+## Установка и запуск
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1. `yarn`
+2. `yarn dev`
 
-- Configure the top-level `parserOptions` property like this:
+## Пояснение к реализации
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+Основная идея заключается в использовании воркеров для базового парсинга JSON. Мы можем распараллеливать парсинг частей JSON по количеству , а затем объединить результаты в один объект. Как потенциальное улучшение, также можно использовать воркеры для валидации JSON при отказе от жесткой типизации полей, либо при реализации пользовательского ввода.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Другин потенциальные улучшения / узкие места, которые, как мне покозалось, выходят за рамки тестового:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+1. Более тщательная валидация полей при парсинге, в особенности полей типа Date или строковых полей смешанного типа по типу `$123`
+2. Более строгая, чем нативная, валидация пользовательского ввода при редактировании полей
+3. Добавление разных типов полей в фильтр, вместо одного `String`
+4. Виртуализация списка (если я правильно понял, ТЗ указывает на то, что эту технику использовать не нужно)
+5. Возможность отрисовки списка не дожидаясь завершения парсинга JSON

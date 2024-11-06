@@ -1,0 +1,10 @@
+.root {
+  background: none;
+  border-radius: 10px;
+  color: white;
+  border: 1px solid white;
+}
+
+.button {
+  margin-left: var(--gap);
+}

@@ -1,0 +1,31 @@
+.id {
+  color: indigo;
+}
+
+.string {
+  color: skyblue;
+}
+
+.number {
+  color: navajowhite;
+}
+
+.email {
+  color: orange;
+}
+
+.date {
+  color: darkcyan;
+}
+
+.boolean {
+  color: blueviolet;
+}
+
+.long_text {
+  color: lightcoral;
+}
+
+.invalid {
+  color: red;
+}

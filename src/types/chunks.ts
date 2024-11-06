@@ -1,10 +1,6 @@
-export type Chunk = {
-  index: number;
-  data: Json[];
-  parsed?: boolean;
-}
+export type JsonType = Record<string, JsonEntry>;
 
-export type Json = Record<string, JsonEntry>;
+export type Chunks = Record<number, JsonType[]>;
 
 export enum JsonEntryType {
   ID = 'id',

@@ -3,3 +3,8 @@
 
   margin-left: var(--gap);
 }
+
+.json {
+  display: flex;
+  flex-direction: column;
+}
