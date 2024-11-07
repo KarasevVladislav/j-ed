@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from 'react';
-import { JsonType } from '../types/chunks';
+import { ProcessedJson } from '../types/chunks';
 
-export const useHelpers = (originalData: JsonType[], processedData: JsonType[], dataSetter: React.Dispatch<React.SetStateAction<JsonType[]>>) => {
+export const useHelpers = (originalData: ProcessedJson[], processedData: ProcessedJson[], dataSetter: React.Dispatch<React.SetStateAction<ProcessedJson[]>>) => {
 	const patchData = useCallback((index: number, key: string, value: unknown) => {
 		const updatedChunks = [...processedData];
 		updatedChunks[index][key].value = value;

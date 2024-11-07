@@ -1,9 +1,9 @@
 import React from 'react';
 import { Json } from './components';
-import { JsonType } from '../../types/chunks';
+import { ProcessedJson } from '../../types/chunks';
 
 type EditorProps = {
-  data: JsonType[];
+  data: ProcessedJson[];
 	loading: boolean;
 };
 

@@ -1,6 +1,6 @@
 /// <reference lib="webworker" />
 
-import { JsonType, JsonEntry, JsonEntryType } from '../types/chunks';
+import { ProcessedJson, JsonEntry, JsonEntryType } from '../types/chunks';
 import { isValid } from 'date-fns';
 
 declare let self: ServiceWorkerGlobalScope;
@@ -37,9 +37,9 @@ function typeChecker(value: unknown): JsonEntryType {
 	return result;
 }
 
-function parseJson(rawData: Record<string, unknown>[]): JsonType[] {
+function parseJson(rawData: Record<string, unknown>[]): ProcessedJson[] {
 	return rawData.map((rawDataJson) => {
-		const copy = { ...rawDataJson } as JsonType;
+		const copy = { ...rawDataJson } as ProcessedJson;
 		const keys = Object.keys(rawDataJson);
 
 		keys.forEach((key) => {

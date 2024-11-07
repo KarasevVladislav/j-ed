@@ -1,6 +1,6 @@
-export type JsonType = Record<string, JsonEntry>;
+export type ProcessedJson = Record<string, JsonEntry>;
 
-export type Chunks = Record<number, JsonType[]>;
+export type Chunks = Record<number, ProcessedJson[]>;
 
 export enum JsonEntryType {
   ID = 'id',

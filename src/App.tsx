@@ -7,12 +7,12 @@ import { Editor, Filter } from './modules';
 
 import styles from './App.module.css';
 import { AppContext } from './App-context';
-import { Chunks, JsonType } from './types/chunks';
+import { Chunks, ProcessedJson } from './types/chunks';
 import { useHelpers } from './hooks';
 
 function App() {
-	const [originalData, setOriginalData] = useState<JsonType[]>([]);
-	const [processedData, setData] = useState<JsonType[]>([]);
+	const [originalData, setOriginalData] = useState<ProcessedJson[]>([]);
+	const [processedData, setData] = useState<ProcessedJson[]>([]);
 	const [isLoading, setIsLoading] = useState(true);
 
 	const {

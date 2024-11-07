@@ -4,11 +4,11 @@ import { Button } from '../../../../shared';
 import styles from './Json.module.css';
 import { KeyTyper } from '../KeyTyper';
 
-import { JsonEntryType, JsonType } from '../../../../types/chunks';
+import { JsonEntryType, ProcessedJson } from '../../../../types/chunks';
 import { ValueTyper } from '../ValueTyper/ValueTyper';
 
 type JsonProps = {
-  json: JsonType;
+  json: ProcessedJson;
 	index: number;
 };
 
